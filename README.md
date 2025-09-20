@@ -17,23 +17,20 @@ This project is designed to showcase **computational physics skills** for CVs an
 - **Probability Density:** Ground state probability |ψ₁(x)|²  
 - **Time-Dependent Wave Packet:** Superposition of first two states with animation showing |Ψ(x,t)|² over time  
 
-**Files:**  
-- `Quantum_Wave_Packets_1D_2D.py` → Python script containing all 1D and 2D simulations  
-- `Plots/1D_stationary_states.png` → First three stationary states  
-- `Plots/1D_probability_ground.png` → Ground state probability density  
-- `Plots/1D_probability_t0.png` → Initial wave packet probability density  
-- `Animations/1D_wavepacket.gif` → Animation of time evolution  
+**Files generated:**  
+- `plots/1D_stationary_states.png` → First three stationary states  
+- `plots/1D_probability_ground.png` → Ground state probability density  
+- `plots/1D_probability_t0.png` → Initial wave packet probability density  
+- `animations/1D_wave_packet.gif` → Time evolution animation  
 
 ### 2D Simulations
-- **Stationary Wavefunctions:** First few eigenstates ψₙₘ(x,y)  
-- **Probability Density:** Ground state |ψ₁₁(x,y)|²  
-- **Time-Dependent Wave Packet:** Superposition of first two states with animation showing |Ψ(x,y,t)|² over time  
+- **Single 2D Stationary State:** |ψ₄₄(x,y)|²  
+- **Time-Dependent Wave Packet:** Superposition of two 2D states (nx1,ny1) = (1,1) and (nx2,ny2) = (2,1) showing |Ψ(x,y,t)|² over time  
 
-**Files:**  
-- `Plots/2D_stationary_states.png` → First few stationary states  
-- `Plots/2D_probability_ground.png` → Ground state probability density  
-- `Plots/2D_probability_t0.png` → Initial wave packet probability density  
-- `Animations/2D_wavepacket.gif` → Animation of time evolution 
+**Files generated:**  
+- `plots/2D_probability_4_4.png` → Single 2D stationary state  
+- `plots/2D_wave_packet.png` → Initial 2D wave packet probability density  
+- `animations/2D_wave_packet.gif` → Time evolution animation 
 
 ---
 
@@ -41,6 +38,11 @@ This project is designed to showcase **computational physics skills** for CVs an
 - Python 3.x
 - NumPy
 - Matplotlib
+
+You can install the required packages using:
+```bash
+pip install numpy matplotlib
+```
 
 ---
 
@@ -58,49 +60,53 @@ git clone https://github.com/mzohaibh17-pixel/Quantum_Wave_Packets_1D_2D.git
 Run the simulations using Python:
 
 ```bash
-# 1D simulation
-python 1D_Wave_Packet_Time_Dependent.py
-
-# 2D simulation
-python 2D_Wave_Packet_Time_Dependent.py
+# Simulations (1D & 2D Combined Simulation)
+python Quantum_Wave_Packets_1D_2D.py
+```
 
 ---
 
 ## Outputs
 
-The simulations generate both plots and animations:
+The simulations generate the following plots and animations:
 
 ### 1D Wave Packet
-- Example plot:  
-  ![1D Wave Packet Plot](Plots/1D_wave_packet.png)  
-- Example animation:  
-  ![1D Wave Packet Animation](Animations/1D_wave_packet.gif)  
+- **Stationary states plot:**  
+  ![1D Stationary States](plots/1D_stationary_states.png)  
+- **Ground state probability density:**  
+  ![1D Ground State](plots/1D_probability_ground.png)  
+- **Initial wave packet probability density:**  
+  ![1D Wave Packet](plots/1D_probability_t0.png)  
+- **Time evolution animation:**  
+  ![1D Wave Packet Animation](animations/1D_wave_packet.gif)  
 
 ### 2D Wave Packet
-- Example plot:  
-  ![2D Wave Packet Plot](Plots/2D_wave_packet.png)  
-- Example animation:  
-  ![2D Wave Packet Animation](Animations/2D_wave_packet.gif)  
+- **Single stationary state |ψ₄₄(x,y)|²:**  
+  ![2D Stationary State](plots/2D_probability_4_4.png)  
+- **Initial wave packet probability density:**  
+  ![2D Wave Packet](plots/2D_wave_packet.png)  
+- **Time evolution animation:**  
+  ![2D Wave Packet Animation](animations/2D_wave_packet.gif)    
 
 ---
 
 ## Project Structure
 
 Quantum_Wave_Packets_1D_2D/
- ├── Quantum_Wave_Packets_1D_2D.py # Main simulation script
- ├── Plots/ # Contains static plots (PNG)
- ├── Animations/ # Contains animation files (GIF, MP4)
- ├── requirements.txt # Project dependencies
- └── README.md # Project documentation
+ ├── Quantum_Wave_Packets_1D_2D.py
+ ├── plots/
+ ├── animations/
+ ├── requirements.txt
+ └── README.md
 
 ---
 
 ## References
 
-- Griffiths, *Introduction to Quantum Mechanics*, 2nd Edition  
-- Sakurai, *Modern Quantum Mechanics*, Revised Edition  
-- NumPy Documentation: [https://numpy.org/doc/](https://numpy.org/doc/)  
-- Matplotlib Documentation: [https://matplotlib.org/stable/contents.html](https://matplotlib.org/stable/contents.html)
+- Griffiths, *Introduction to Quantum Mechanics*, 2nd Edition – for theory of quantum wavefunctions and particle in a box  
+- Sakurai, *Modern Quantum Mechanics*, Revised Edition – for advanced quantum concepts  
+- NumPy Documentation: [https://numpy.org/doc/](https://numpy.org/doc/) – for array computations and numerical operations in Python  
+- Matplotlib Documentation: [https://matplotlib.org/stable/contents.html](https://matplotlib.org/stable/contents.html) – for plotting and creating animations in Python
 
 ---
 

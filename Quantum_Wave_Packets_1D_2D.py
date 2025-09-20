@@ -7,6 +7,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+import os
+os.makedirs('plots', exist_ok=True)
+os.makedirs('animations', exist_ok=True)
 
 
 # Parameters
@@ -39,7 +42,7 @@ plt.ylabel(r'Wavefunction $\psi_n(x)$')
 plt.title('1D Particle in a Box: First Three Stationary States')
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.tight_layout()
-plt.savefig('C:/Users/Zohaib Hassan/Downloads/Projects/Quantum_Wave_Packets_1D_2D/plots/1D_stationary_states.png', dpi=300)
+plt.savefig('plots/1D_stationary_states.png', dpi=300)
 plt.show()
 
 
@@ -53,7 +56,7 @@ plt.ylabel('Probability Density')
 plt.title('1D Particle in a Box: Ground State Probability Density', fontsize=14)
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.legend()
-plt.savefig('C:/Users/Zohaib Hassan/Downloads/Projects/Quantum_Wave_Packets_1D_2D/plots/1D_probability_ground.png', dpi=300)
+plt.savefig('plots/1D_probability_ground.png', dpi=300)
 plt.show()
 
 
@@ -74,7 +77,7 @@ plt.xlabel('x')
 plt.ylabel('|Ψ(x,0)|²')
 plt.title('1D Wave Packet Probability Density at t=0')
 plt.grid(True, linestyle='--', alpha=0.5)
-plt.savefig('C:/Users/Zohaib Hassan/Downloads/Projects/Quantum_Wave_Packets_1D_2D/plots/1D_probability_t0.png', dpi=300)
+plt.savefig('plots/1D_probability_t0.png', dpi=300)
 plt.show()
 
 
@@ -93,7 +96,7 @@ def animate(t):
     line.set_ydata(np.abs(psi_t(x,t))**2)
     return line
 anim = animation.FuncAnimation(fig, animate, frames = np.linspace(0, 20, 200), interval = 100)
-anim.save('C:/Users/Zohaib Hassan/Downloads/Projects/Quantum_Wave_Packets_1D_2D/animations/1D_wavepacket.gif', writer = 'pillow', dpi=150)
+anim.save('animations/1D_wave_packet.gif', writer = 'pillow', dpi=150)
 plt.show()
 
 
@@ -112,5 +115,48 @@ plt.title(f'2D Probability Density |ψ_{nx},{ny}(x,y)|²')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.grid(True, linestyle='--', alpha=0.5)
-plt.savefig(f'C:/Users/Zohaib Hassan/Downloads/Projects/Quantum_Wave_Packets_1D_2D/plots/2D_probability_{nx}_{ny}.png', dpi=300)
+plt.savefig(f'plots/2D_probability_{nx}_{ny}.png', dpi=300)
 plt.show()
+
+# 2D wave packet at t = 0 plot
+
+nx1, ny1 = 1, 1
+nx2, ny2 = 2, 1
+def psi2D(nx, ny, X, Y):
+    return (2/np.sqrt(Lx*Ly)) * np.sin(nx*np.pi*X/Lx) * np.sin(ny*np.pi*Y/Ly)
+psi2D_t0 = c1*psi2D(nx1, ny1, X, Y) + c2*psi2D(nx2, ny2, X, Y)
+plt.figure(figsize = (6,5))
+plt.contourf(X, Y, np.abs(psi2D_t0)**2, cmap = 'magma')
+plt.colorbar(label='Probability Density')
+plt.title('2D Wave Packet Probability Density at t=0')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.grid(True, linestyle='--', alpha=0.5)
+plt.tight_layout()
+plt.savefig('plots/2D_wave_packet.png', dpi=300)
+plt.show()
+
+# 2D wave packet animation
+
+def energy2D(nx, ny):
+    return (np.pi**2 * hbar**2 / (2*m)) * (nx**2 / Lx**2 + ny**2 / Ly**2)
+fig, ax = plt.subplots(figsize = (6,5))
+def animate_2D(t):
+    ax.clear()
+    psi_t = (c1*psi2D(nx1, ny1, X, Y)*np.exp(-1j*energy2D(nx1, ny1)*t/hbar) + c2*psi2D(nx2, ny2, X, Y)*np.exp(-1j*energy2D(nx2, ny2)*t/hbar))
+    prob_density = np.abs(psi_t)**2
+    mad = ax.contourf(X, Y, prob_density, cmap = 'magma')
+    ax.set_title(f'Time Evolution of 2D Wave Packet (t={t:.2f})')
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.grid(True, linestyle = '--', alpha = 0.5)
+anim2D = animation.FuncAnimation(fig, animate_2D, frames = np.linspace(0, 10, 100), interval = 100)
+anim2D.save('animations/2D_wave_packet.gif',writer='pillow',dpi=150)
+plt.show()
+
+
+# In[ ]:
+
+
+
+
