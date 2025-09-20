@@ -106,7 +106,7 @@ x2 = np.linspace(0, Lx, 100)
 y2 = np.linspace(0, Ly, 100)
 X, Y = np.meshgrid(x2, y2)
 psi2D = 2/np.sqrt((Lx*Ly))*np.sin(nx*np.pi*X/Lx)*np.sin(ny*np.pi*Y/Ly)   
-plt.contourf(X, Y, psi2D**2, cmap = 'magma')
+plt.contourf(X, Y, np.abs(psi2D)**2, cmap = 'magma')
 plt.colorbar(label = 'Probability Density')
 plt.title(f'2D Probability Density |ψ_{nx},{ny}(x,y)|²')
 plt.xlabel('x')
@@ -114,10 +114,3 @@ plt.ylabel('y')
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.savefig(f'C:/Users/Zohaib Hassan/Downloads/Projects/Quantum_Wave_Packets_1D_2D/plots/2D_probability_{nx}_{ny}.png', dpi=300)
 plt.show()
-
-
-# In[ ]:
-
-
-
-
