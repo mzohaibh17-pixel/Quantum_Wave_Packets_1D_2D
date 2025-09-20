@@ -49,6 +49,7 @@ This project is designed to showcase **computational physics skills** for CVs an
 1. Clone the repository:
 ```bash
 git clone https://github.com/mzohaibh17-pixel/Quantum_Wave_Packets_1D_2D.git
+```
 
 ---
 
