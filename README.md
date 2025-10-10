@@ -1,66 +1,76 @@
-README
-
 # Quantum Wave Packets in 1D and 2D
 
 ## Overview
-This project demonstrates **quantum wave packet simulations** in both **1D and 2D infinite potential wells** using Python.  
-It includes **stationary wavefunctions**, **probability densities**, and **time-dependent animations** of 1D wave packets, as well as **2D probability density plots**.  
+This project simulates **1D and 2D quantum wave packets** for a particle in a box using Python. It covers:
 
-This project is designed to showcase **computational physics skills** for CVs and GitHub portfolios.
+- Calculation of stationary wavefunctions for the first few quantum states
+- Probability density plots for 1D and 2D wavefunctions
+- Time-dependent wave packet simulations using superposition of states
+- 1D and 2D animations of wave packet evolution
+- Visualization of probability densities and wave packet dynamics
+
+---
+
+## Project Structure
+
+Quantum_Wave_Packets_1D_2D/
+│
+├── animations/
+├── plots/
+├── Quantum_Wave_Packets_1D_2D.ipynb
+├── Quantum_Wave_Packets_1D_2D.py
+├── requirements.txt
+├── .gitignore
+└── README.md
+---
+
+## Installation Instructions
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/mzohaibh17-pixel/Quantum_Wave_Packets_1D_2D.git
+cd Quantum_Wave_Packets_1D_2D
+```
+
+2. **Create a virtual environment and activate it**
+```bash
+python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # Linux / Mac
+```
+3. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
 ## Features
 
-### 1D Simulations
-- **Stationary Wavefunctions:** First three eigenstates ψ₁(x), ψ₂(x), ψ₃(x)  
-- **Probability Density:** Ground state probability |ψ₁(x)|²  
-- **Time-Dependent Wave Packet:** Superposition of first two states with animation showing |Ψ(x,t)|² over time  
-
-**Files generated:**  
-- `plots/1D_stationary_states.png` → First three stationary states  
-- `plots/1D_probability_ground.png` → Ground state probability density  
-- `plots/1D_probability_t0.png` → Initial wave packet probability density  
-- `animations/1D_wave_packet.gif` → Time evolution animation  
-
-### 2D Simulations
-- **Single 2D Stationary State:** |ψ₄₄(x,y)|²  
-- **Time-Dependent Wave Packet:** Superposition of two 2D states (nx1,ny1) = (1,1) and (nx2,ny2) = (2,1) showing |Ψ(x,y,t)|² over time  
-
-**Files generated:**  
-- `plots/2D_probability_4_4.png` → Single 2D stationary state  
-- `plots/2D_wave_packet.png` → Initial 2D wave packet probability density  
-- `animations/2D_wave_packet.gif` → Time evolution animation 
-
----
-
-## Requirements
-- Python 3.x
-- NumPy
-- Matplotlib
-
-You can install the required packages using:
-```bash
-pip install numpy matplotlib
-```
-
----
-
-## Installation Instructions
-
-1. Clone the repository:
-```bash
-git clone https://github.com/mzohaibh17-pixel/Quantum_Wave_Packets_1D_2D.git
-```
+- Computes stationary wavefunctions and probability densities in 1D and 2D
+- Calculates energy eigenvalues for different quantum states
+- Simulates time-dependent wave packets using superposition of quantum states
+- Generates plots:
+  - 1D stationary wavefunctions
+  - Ground state probability density
+  - 1D wave packet probability density at t=0
+  - 2D probability density plots
+  - 2D wave packet probability density at t=0
+- Creates animations:
+  - 1D wave packet evolution
+  - 2D wave packet evolution
+- Fully self-contained Jupyter notebook and Python script for easy execution 
 
 ---
 
 ## Usage
-
-Run the simulations using Python:
-
+1. **Run the Jupyter notebook** (recommended):
 ```bash
-# Simulations (1D & 2D Combined Simulation)
+jupyter notebook Quantum_Wave_Packets_1D_2D.ipynb
+```
+
+2. **Or run the Python script**:
+```bash
 python Quantum_Wave_Packets_1D_2D.py
 ```
 
@@ -68,36 +78,33 @@ python Quantum_Wave_Packets_1D_2D.py
 
 ## Outputs
 
-The simulations generate the following plots and animations:
+The project generates the following visualizations and animations:
 
-### 1D Wave Packet
-- **Stationary states plot:**  
-  ![1D Stationary States](plots/1D_stationary_states.png)  
-- **Ground state probability density:**  
-  ![1D Ground State](plots/1D_probability_ground.png)  
-- **Initial wave packet probability density:**  
-  ![1D Wave Packet](plots/1D_probability_t0.png)  
-- **Time evolution animation:**  
-  ![1D Wave Packet Animation](animations/1D_wave_packet.gif)  
+- **1D Wavefunctions:**
+  - First three stationary states
+  - Ground state probability density
+  - Time-dependent 1D wave packet evolution
 
-### 2D Wave Packet
-- **Single stationary state |ψ₄₄(x,y)|²:**  
-  ![2D Stationary State](plots/2D_probability_4_4.png)  
-- **Initial wave packet probability density:**  
-  ![2D Wave Packet](plots/2D_wave_packet.png)  
-- **Time evolution animation:**  
-  ![2D Wave Packet Animation](animations/2D_wave_packet.gif)    
+- **2D Wavefunctions:**
+  - Probability density plots for specific quantum states
+  - Time-dependent 2D wave packet evolution
+
+- **Animations:**
+  - `1D_wave_packet.gif` showing evolution of the 1D wave packet
+  - `2D_wave_packet.gif` showing evolution of the 2D wave packet
+
+All plots and animations are automatically saved to the corresponding folders.
 
 ---
 
-## Project Structure
+## Dependencies
 
-Quantum_Wave_Packets_1D_2D/
- ├── Quantum_Wave_Packets_1D_2D.py
- ├── plots/
- ├── animations/
- ├── requirements.txt
- └── README.md
+- Python 3.x
+- numpy
+- matplotlib
+- pillow
+
+> All dependencies are included in `requirements.txt`, so you can install everything at once using `pip install -r requirements.txt`.   
 
 ---
 
@@ -113,9 +120,38 @@ Quantum_Wave_Packets_1D_2D/
 ## Author / Credits
 
 **Muhammad Zohaib Hassan**  
-- Bachelor’s in Physics, University of Sargodha  
-- GitHub: [mzohaibh17-pixel](https://github.com/mzohaibh17-pixel)  
-- Email: mzohaibh17@gmail.com  
+Bachelor’s in Physics, University of Sargodha  
+GitHub: [mzohaibh17-pixel](https://github.com/mzohaibh17-pixel)  
+Email: mzohaibh17@gmail.com  
 
-*This project is for educational and research purposes in computational physics.*
+This project is for educational and research purposes in computational physics.  
+It is licensed under the **MIT License**, which requires including the copyright notice in any copies or substantial portions of the software.  
+If you use, adapt, or fork this project, please give proper credit to the author.
+
+---
+
+## Visualizations
+
+The following plots provide a visual summary of the Quantum Wave Packets project:
+
+### 1D Stationary States
+![1D Stationary States](plots/1D_stationary_states.png)
+
+### Ground State Probability Density
+![Ground State](plots/1D_probability_ground.png)
+
+### 1D Wave Packet at t=0
+![1D Wave Packet t=0](plots/1D_probability_t0.png)
+
+### 2D Probability Density
+![2D Probability Density](plots/2D_probability_4_4.png)
+
+### 2D Wave Packet at t=0
+![2D Wave Packet t=0](plots/2D_wave_packet.png)
+
+### 1D Wave Packet Animation
+![1D Animation](animations/1D_wave_packet.gif)
+
+### 2D Wave Packet Animation
+![2D Animation](animations/2D_wave_packet.gif)
 

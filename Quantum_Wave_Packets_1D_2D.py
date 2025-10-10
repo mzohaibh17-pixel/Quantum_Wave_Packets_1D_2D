@@ -8,12 +8,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import os
-os.makedirs('plots', exist_ok=True)
-os.makedirs('animations', exist_ok=True)
-
+base_dir = os.path.dirname(os.path.abspath(__file__))
+plots_dir = os.path.join(base_dir, 'plots')
+anim_dir = os.path.join(base_dir, 'animations')
+os.makedirs(plots_dir, exist_ok = True)
+os.makedirs(anim_dir, exist_ok = True)
 
 # Parameters
-
 
 L = 1
 m = 1
@@ -21,18 +22,14 @@ hbar = 1
 n_max = 5
 x = np.linspace(0, L, 1000)
 
-
 # Functions
-
 
 def energy(n):
     return (n**2 * np.pi**2 * hbar**2) / (2*m*L**2)
 def psi(n, x):
     return np.sqrt(2/L) * np.sin(n * np.pi * x / L)
 
-
 # Plot first three stationary wavefunctions
-
 
 plt.figure(figsize = (8,5))
 for n in range(1, 4):
@@ -42,12 +39,10 @@ plt.ylabel(r'Wavefunction $\psi_n(x)$')
 plt.title('1D Particle in a Box: First Three Stationary States')
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.tight_layout()
-plt.savefig('plots/1D_stationary_states.png', dpi=300)
+plt.savefig(os.path.join(plots_dir, '1D_stationary_states.png'), dpi=300)
 plt.show()
 
-
 # Plot ground state probability density
-
 
 plt.figure(figsize = (8,5))
 plt.plot(x, psi(1, x)**2, color = 'blue', linestyle = ':', label=r'$|\psi_1(x)|^2$')
@@ -56,20 +51,16 @@ plt.ylabel('Probability Density')
 plt.title('1D Particle in a Box: Ground State Probability Density', fontsize=14)
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.legend()
-plt.savefig('plots/1D_probability_ground.png', dpi=300)
+plt.savefig(os.path.join(plots_dir, '1D_probability_ground.png'), dpi=300)
 plt.show()
 
-
 # Time-dependent wavefunction (superposition of first two states)
-
 
 c1, c2 = 1/np.sqrt(2), 1/np.sqrt(2)
 def psi_t(x, t):
     return c1*psi(1,x)*np.exp(-1j*energy(1)*t/hbar) + c2*psi(2,x)*np.exp(-1j*energy(2)*t/hbar)
 
-
 # Plot initial 1D wave packet probability density at t=0
-
 
 plt.figure(figsize=(8,5))
 plt.plot(x, np.abs(psi_t(x,0))**2)
@@ -77,12 +68,10 @@ plt.xlabel('x')
 plt.ylabel('|Ψ(x,0)|²')
 plt.title('1D Wave Packet Probability Density at t=0')
 plt.grid(True, linestyle='--', alpha=0.5)
-plt.savefig('plots/1D_probability_t0.png', dpi=300)
+plt.savefig(os.path.join(plots_dir, '1D_probability_t0.png'), dpi=300)
 plt.show()
 
-
 # Animate time evolution of the 1D wave packet
-
 
 fig, ax = plt.subplots()
 line, = ax.plot(x, np.abs(psi_t(x, 0))**2, label=r'$|\Psi(x,t)|^2$', color = 'red')
@@ -96,12 +85,10 @@ def animate(t):
     line.set_ydata(np.abs(psi_t(x,t))**2)
     return line
 anim = animation.FuncAnimation(fig, animate, frames = np.linspace(0, 20, 200), interval = 100)
-anim.save('animations/1D_wave_packet.gif', writer = 'pillow', dpi=150)
+anim.save(os.path.join(anim_dir, '1D_wave_packet.gif'), writer='pillow', dpi=150)
 plt.show()
 
-
 # 2D probability density plot
-
 
 Lx, Ly = 1.0, 1.0
 nx, ny = 4, 4
@@ -116,6 +103,7 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.savefig(f'plots/2D_probability_{nx}_{ny}.png', dpi=300)
+plt.savefig(os.path.join(plots_dir, f'2D_probability_{nx}_{ny}.png'), dpi=300)
 plt.show()
 
 # 2D wave packet at t = 0 plot
@@ -133,7 +121,7 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.tight_layout()
-plt.savefig('plots/2D_wave_packet.png', dpi=300)
+plt.savefig(os.path.join(plots_dir, '2D_wave_packet.png'), dpi=300)
 plt.show()
 
 # 2D wave packet animation
@@ -151,7 +139,7 @@ def animate_2D(t):
     ax.set_ylabel('y')
     ax.grid(True, linestyle = '--', alpha = 0.5)
 anim2D = animation.FuncAnimation(fig, animate_2D, frames = np.linspace(0, 10, 100), interval = 100)
-anim2D.save('animations/2D_wave_packet.gif',writer='pillow',dpi=150)
+anim.save(os.path.join(anim_dir, '2D_wave_packet.gif'), writer='pillow', dpi=150)
 plt.show()
 
 
