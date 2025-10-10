@@ -12,7 +12,7 @@ This project simulates **1D and 2D quantum wave packets** for a particle in a bo
 ---
 
 ## Project Structure
-
+```
 Quantum_Wave_Packets_1D_2D/
 │
 ├── animations/
@@ -22,6 +22,8 @@ Quantum_Wave_Packets_1D_2D/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+```
+
 ---
 
 ## Installation Instructions
