@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[1]:
 
 
 import numpy as np
@@ -139,7 +139,7 @@ def animate_2D(t):
     ax.set_ylabel('y')
     ax.grid(True, linestyle = '--', alpha = 0.5)
 anim2D = animation.FuncAnimation(fig, animate_2D, frames = np.linspace(0, 10, 100), interval = 100)
-anim.save(os.path.join(anim_dir, '2D_wave_packet.gif'), writer='pillow', dpi=150)
+anim2D.save(os.path.join(anim_dir, '2D_wave_packet.gif'), writer='pillow', dpi=150)
 plt.show()
 
 
