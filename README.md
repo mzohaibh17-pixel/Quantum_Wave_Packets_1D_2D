@@ -9,6 +9,8 @@ This project simulates **1D and 2D quantum wave packets** for a particle in a bo
 - 1D and 2D animations of wave packet evolution
 - Visualization of probability densities and wave packet dynamics
 
+The project is implemented in both a Python script and Jupyter notebooks  located in the `simulations/` folder for interactive exploration.
+
 ---
 
 ## Project Structure
@@ -17,8 +19,9 @@ Quantum_Wave_Packets_1D_2D/
 │
 ├── animations/
 ├── plots/
-├── Quantum_Wave_Packets_1D_2D.ipynb
-├── Quantum_Wave_Packets_1D_2D.py
+├── simulations/
+│   ├── Quantum_Wave_Packets_1D_2D.ipynb
+│   └── Quantum_Wave_Packets_1D_2D.py
 ├── requirements.txt
 ├── .gitignore
 └── README.md
@@ -68,12 +71,12 @@ pip install -r requirements.txt
 ## Usage
 1. **Run the Jupyter notebook** (recommended):
 ```bash
-jupyter notebook Quantum_Wave_Packets_1D_2D.ipynb
+jupyter notebook simulations/Quantum_Wave_Packets_1D_2D.ipynb
 ```
 
 2. **Or run the Python script**:
 ```bash
-python Quantum_Wave_Packets_1D_2D.py
+python simulations/Quantum_Wave_Packets_1D_2D.py
 ```
 
 ---
