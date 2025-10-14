@@ -1,17 +1,23 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[4]:
 
 
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
+from pathlib import Path
 import os
-base_dir = os.path.dirname(os.path.abspath(__file__))
-plots_dir = os.path.join(base_dir, 'plots')
-anim_dir = os.path.join(base_dir, 'animations')
+try:
+    base_dir = Path().resolve().parent
+except NameError:
+    base_dir = Path(__file__).parent.parent.resolve()
+plots_dir = base_dir / 'plots'
+simulations_dir = base_dir / 'simulations'
+anim_dir =  base_dir / 'animations'
 os.makedirs(plots_dir, exist_ok = True)
+os.makedirs(simulations_dir, exist_ok = True)
 os.makedirs(anim_dir, exist_ok = True)
 
 # Parameters
@@ -39,7 +45,8 @@ plt.ylabel(r'Wavefunction $\psi_n(x)$')
 plt.title('1D Particle in a Box: First Three Stationary States')
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.tight_layout()
-plt.savefig(os.path.join(plots_dir, '1D_stationary_states.png'), dpi=300)
+plot_file = plots_dir / '1D_stationary_states.png'
+plt.savefig(plot_file, dpi=300)
 plt.show()
 
 # Plot ground state probability density
@@ -51,7 +58,8 @@ plt.ylabel('Probability Density')
 plt.title('1D Particle in a Box: Ground State Probability Density', fontsize=14)
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.legend()
-plt.savefig(os.path.join(plots_dir, '1D_probability_ground.png'), dpi=300)
+plot_file = plots_dir / '1D_probability_ground.png'
+plt.savefig(plot_file, dpi=300)
 plt.show()
 
 # Time-dependent wavefunction (superposition of first two states)
@@ -67,8 +75,9 @@ plt.plot(x, np.abs(psi_t(x,0))**2)
 plt.xlabel('x')
 plt.ylabel('|Ψ(x,0)|²')
 plt.title('1D Wave Packet Probability Density at t=0')
-plt.grid(True, linestyle='--', alpha=0.5)
-plt.savefig(os.path.join(plots_dir, '1D_probability_t0.png'), dpi=300)
+plt.grid(True, linestyle='--', alpha = 0.5)
+plot_file = plots_dir / '1D_probability_t0.png'
+plt.savefig(plot_file, dpi=300)
 plt.show()
 
 # Animate time evolution of the 1D wave packet
@@ -79,13 +88,14 @@ ax.set_ylim(0,3)
 ax.set_xlabel('x')
 ax.set_ylabel('|Ψ(x,t)|²')
 ax.set_title('Time Evolution of 1D Wave Packet')
-ax.grid(True, linestyle='--', alpha=0.5)
+ax.grid(True, linestyle = '--', alpha=0.5)
 ax.legend()
 def animate(t):
     line.set_ydata(np.abs(psi_t(x,t))**2)
     return line
 anim = animation.FuncAnimation(fig, animate, frames = np.linspace(0, 20, 200), interval = 100)
-anim.save(os.path.join(anim_dir, '1D_wave_packet.gif'), writer='pillow', dpi=150)
+anim_file = anim_dir / '1D_wave_packet.gif'
+anim.save(anim_file, writer = 'pillow', dpi = 300)
 plt.show()
 
 # 2D probability density plot
@@ -102,8 +112,8 @@ plt.title(f'2D Probability Density |ψ_{nx},{ny}(x,y)|²')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.grid(True, linestyle='--', alpha=0.5)
-plt.savefig(f'plots/2D_probability_{nx}_{ny}.png', dpi=300)
-plt.savefig(os.path.join(plots_dir, f'2D_probability_{nx}_{ny}.png'), dpi=300)
+plot_file = plots_dir / f'2D_probability_{nx}_{ny}.png'
+plt.savefig(plot_file, dpi = 300)
 plt.show()
 
 # 2D wave packet at t = 0 plot
@@ -121,7 +131,8 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.grid(True, linestyle='--', alpha=0.5)
 plt.tight_layout()
-plt.savefig(os.path.join(plots_dir, '2D_wave_packet.png'), dpi=300)
+plot_file = plots_dir / '2D_wave_packet.png'
+plt.savefig(plot_file, dpi = 300)
 plt.show()
 
 # 2D wave packet animation
@@ -139,7 +150,8 @@ def animate_2D(t):
     ax.set_ylabel('y')
     ax.grid(True, linestyle = '--', alpha = 0.5)
 anim2D = animation.FuncAnimation(fig, animate_2D, frames = np.linspace(0, 10, 100), interval = 100)
-anim2D.save(os.path.join(anim_dir, '2D_wave_packet.gif'), writer='pillow', dpi=150)
+anim_file = anim_dir / '2D_wave_packet.gif'
+anim2D.save(anim_file, writer = 'pillow', dpi = 150)
 plt.show()
 
 

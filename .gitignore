@@ -1,17 +1,13 @@
+# Virtual environment
+venv/
+
 # Python cache
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
 
-# Virtual environment
-venv/
-env/
-.venv/
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
-# OS-specific files
+# System files
 .DS_Store
 Thumbs.db
+
+# Jupyter Notebook checkpoints (inside simulations folder)
+simulations/.ipynb_checkpoints/

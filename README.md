@@ -95,7 +95,7 @@ The project generates the following visualizations and animations:
   - `1D_wave_packet.gif` showing evolution of the 1D wave packet
   - `2D_wave_packet.gif` showing evolution of the 2D wave packet
 
-All plots and animations are automatically saved to the corresponding folders.
+All generated plots and animations are automatically saved in their respective folders: `plots/` and `animations/`.
 
 ---
 
